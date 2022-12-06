@@ -13,7 +13,6 @@ class TicTacToe:
             row = ['-'] * 3
             self.board.append(row)
         
-
     #randomly decides if the player or the computer will start the game
     def get_starting_player(self) -> str:
         players = ("Player", "Computer")
@@ -185,8 +184,9 @@ class TicTacToe:
                 print("Please type Y to play again or N to quit. \n")
                 continue
             #checks if the character is a y or n
-            if play_again.upper() != "Y" or play_again.upper() != "N":
+            if play_again.upper() != "Y" and play_again.upper() != "N":
                 print("Please type Y to play again or N to quit. \n")
+                continue
             if play_again.upper() == "Y":
                 is_valid_input = True
                 self.reset_board()

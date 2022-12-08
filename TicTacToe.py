@@ -173,7 +173,6 @@ class TicTacToe:
         
         self.play_again()
         
-       
     #asks the user if they would like to play again
     def play_again(self) -> None:
         is_valid_input = False

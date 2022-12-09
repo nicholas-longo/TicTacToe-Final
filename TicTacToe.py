@@ -1,8 +1,8 @@
 import random
 
 computer_difficulty = "easy"
-player_win_counter = 0
-computer_win_counter = 0
+player_win_counter = 0 
+computer_win_counter = 0 
 
 
 class TicTacToe:
@@ -75,6 +75,8 @@ class TicTacToe:
     #checks if player or computer has won the game
     def check_win(self) -> bool:
         #check rows 
+        global player_win_counter
+        global computer_win_counter
         counter = 0
         for row in range(len(self.board)):
             position_value = self.board[row][0]
@@ -84,7 +86,11 @@ class TicTacToe:
                     break
                 if self.board[row][col] == position_value:
                     counter += 1 #the first iteration is guaranteed to make counter at least 1
-                if counter == 3: 
+                if counter == 3:
+                    if position_value == "X":
+                        player_win_counter += 1
+                    if position_value == "O":
+                        computer_win_counter += 1
                     print(f"{position_value} wins! \n")
                     self.show_board()
                     return True
@@ -99,7 +105,11 @@ class TicTacToe:
                     break
                 if self.board[row][col] == position_value:
                     counter += 1
-                if counter == 3: 
+                if counter == 3:
+                    if position_value == "X":
+                        player_win_counter += 1
+                    if position_value == "O":
+                        computer_win_counter += 1
                     print(f"{position_value} wins!\n")
                     self.show_board()
                     return True
@@ -113,6 +123,10 @@ class TicTacToe:
             if position_value == self.board[row][row]:
                 counter += 1
             if counter == 3: 
+                if position_value == "X":
+                    player_win_counter += 1
+                if position_value == "O":
+                    computer_win_counter += 1
                 print(f"{position_value} wins! \n")
                 self.show_board()
                 return True
@@ -127,6 +141,10 @@ class TicTacToe:
             if position_value == self.board[row][len(self.board)-1 -row]:
                 counter += 1
             if counter == 3: 
+                if position_value == "X":
+                    player_win_counter += 1
+                if position_value == "O":
+                    computer_win_counter += 1
                 print(f"{position_value} wins!\n")
                 self.show_board()
                 return True
@@ -175,6 +193,7 @@ class TicTacToe:
         
     #asks the user if they would like to play again
     def play_again(self) -> None:
+
         is_valid_input = False
         while not is_valid_input:
             play_again = input("Type Y to play again or N to quit: ")
@@ -191,7 +210,8 @@ class TicTacToe:
                 self.reset_board()
                 self.game_on()
             if play_again.upper() == "N":
-                #add a score counter
+                print(f"You won {player_win_counter} times!")
+                print(f"The computer won {computer_win_counter} times!")
                 print("Thanks for playing!")
                 is_valid_input = True
             

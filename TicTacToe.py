@@ -42,7 +42,16 @@ class TicTacToe:
 
     #plays turn for computer on "hard"
     def comp_turn_hard(self) -> None: 
-        print("hello")
+        print("Hard difficulty is in development. Easy difficulty is being played:")
+        is_valid_input = False
+        while not is_valid_input:
+            comp_row_position = random.randint(1, 3)
+            comp_col_position = random.randint(1, 3)
+            if self.board[comp_row_position - 1][comp_col_position - 1] != "-":
+                continue
+            self.board[comp_row_position - 1][comp_col_position - 1] = "O"
+            is_valid_input = True
+            print(f"The computer played row {comp_row_position} and column {comp_col_position} \n")
 
     #plays the player's (X) turn
     def player_turn(self) -> None:

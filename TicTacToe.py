@@ -163,7 +163,7 @@ class TicTacToe:
 
     #starts the game
     def game_on(self) -> None:
-        # add the computer difficulty change option
+        self.set_difficulty()
         print("\n")
         starting_player = self.get_starting_player()
         print(starting_player, "will start the game!")
@@ -215,11 +215,26 @@ class TicTacToe:
                 print("Thanks for playing!")
                 is_valid_input = True
             
+    #resets the board for a new game
     def reset_board(self) -> None:
         self.board = []
         for r in range(3):
             row = ['-'] * 3
             self.board.append(row)
+
+    def set_difficulty(self) -> None:
+        global computer_difficulty
+        is_valid_input = False 
+        while not is_valid_input: 
+            computer_difficulty = input("Select difficulty 'easy', 'medium', or 'hard': ")
+            if not computer_difficulty.isalpha():
+                print("Please select a valid difficulty.")
+                continue
+            if not (computer_difficulty == "easy" or computer_difficulty == "medium" or computer_difficulty == "hard"):
+                print("Please select a valid difficulty.")
+                continue
+            is_valid_input = True
+            print(f"\nComputer Difficulty is set to {computer_difficulty}.")
 
 
 def main():

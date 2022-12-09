@@ -24,8 +24,6 @@ class TicTacToe:
 
         if computer_difficulty == "easy": 
             self.comp_turn_easy()
-        if computer_difficulty == "medium":
-            self.comp_turn_medium()
         if computer_difficulty == "hard":
             self.comp_turn_hard()
 
@@ -40,10 +38,7 @@ class TicTacToe:
             self.board[comp_row_position - 1][comp_col_position - 1] = "O"
             is_valid_input = True
             print(f"The computer played row {comp_row_position} and column {comp_col_position} \n")
-   
-   #plays turn for computer on "medium"
-    def comp_turn_medium(self) -> None: 
-        print("hi")
+
 
     #plays turn for computer on "hard"
     def comp_turn_hard(self) -> None: 
@@ -242,11 +237,11 @@ class TicTacToe:
         global computer_difficulty
         is_valid_input = False 
         while not is_valid_input: 
-            computer_difficulty = input("Select difficulty 'easy', 'medium', or 'hard': ")
+            computer_difficulty = input("Select difficulty 'easy' or 'hard': ")
             if not computer_difficulty.isalpha():
                 print("Please select a valid difficulty.")
                 continue
-            if not (computer_difficulty == "easy" or computer_difficulty == "medium" or computer_difficulty == "hard"):
+            if not (computer_difficulty == "easy" or computer_difficulty == "hard"):
                 print("Please select a valid difficulty.")
                 continue
             is_valid_input = True

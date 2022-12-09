@@ -19,10 +19,18 @@ class TicTacToe:
         first_starting_player = random.choice(players)
         return first_starting_player
 
-    #plays the computer's (O) turn
-    def comp_turn(self) -> None:
+    #selects the difficulty that the computer is being played on
+    def comp_difficulty_select(self) -> None:
 
-        # easy mode. completely random gameplay
+        if computer_difficulty == "easy": 
+            self.comp_turn_easy()
+        if computer_difficulty == "medium":
+            self.comp_turn_medium()
+        if computer_difficulty == "hard":
+            self.comp_turn_hard()
+
+    #plays turn for computer on "easy"
+    def comp_turn_easy(self) -> None: 
         is_valid_input = False
         while not is_valid_input:
             comp_row_position = random.randint(1, 3)
@@ -32,6 +40,14 @@ class TicTacToe:
             self.board[comp_row_position - 1][comp_col_position - 1] = "O"
             is_valid_input = True
             print(f"The computer played row {comp_row_position} and column {comp_col_position} \n")
+   
+   #plays turn for computer on "medium"
+    def comp_turn_medium(self) -> None: 
+        print("hi")
+
+    #plays turn for computer on "hard"
+    def comp_turn_hard(self) -> None: 
+        print("hello")
 
     #plays the player's (X) turn
     def player_turn(self) -> None:
@@ -174,13 +190,13 @@ class TicTacToe:
                 if self.check_win() or self.check_draw():
                     break
                 self.show_board()
-                self.comp_turn()
+                self.comp_difficulty_select()
                 if self.check_win() or self.check_draw():
                     break
 
         else:
             while True:
-                self.comp_turn()
+                self.comp_difficulty_select()
                 if self.check_win() or self.check_draw():
                     break
                 self.show_board()
